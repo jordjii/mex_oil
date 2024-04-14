@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=cp1251" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MexOil Fuel Station Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .fuel-types {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .fuel-type {
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            width: 24%;
+            cursor: pointer;
+        }
+
+            .fuel-type.activated {
+                background-color: lightblue;
+            }
+
+        .customer-form {
+            margin-top: 20px;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .navigation a {
+                text-decoration: none;
+                color: #333;
+                padding: 5px 10px;
+                margin: 0 10px;
+                border-radius: 5px;
+                background-color: #ccc;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MexOil Fuel Station</h1>
+        <div class="navigation">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Prices</a>
+            <a href="#">Contact</a>
+            <a href="register.html">My Account</a>
+        </div>
+    </header>
+    <div class="container">
+        <h2>About MexOil Fuel Stations</h2>
+        <p>MexOil is a large network of fuel stations operating in the fuel-energy complex market since 2005. Our stations offer quality fuel at affordable prices, as well as a wide range of additional services for drivers.</p>
+        <h2>Choose Fuel Type</h2>
+        <div class="fuel-types">
+            <button class="fuel-type" onclick="toggleFuelType(this)">92 Octane</button>
+            <button class="fuel-type" onclick="toggleFuelType(this)">95 Octane</button>
+            <button class="fuel-type" onclick="toggleFuelType(this)">98 Octane</button>
+            <button class="fuel-type" onclick="toggleFuelType(this)">Diesel</button>
+        </div>
+        <form class="customer-form">
+            <label for="station-number">Station Number:</label>
+            <select id="station-number" name="station-number">
+                <option value="1">Station 1</option>
+                <option value="2">Station 2</option>
+                <option value="3">Station 3</option>
+            </select>
+
+            <label for="column">Column:</label>
+            <select id="column" name="column">
+                <option value="1">Column 1</option>
+                <option value="2">Column 2</option>
+                <option value="3">Column 3</option>
+                <option value="4">Column 4</option>
+            </select>
+
+            <label for="fuel-amount">Fuel Amount (liters):</label>
+            <input type="number" id="fuel-amount" name="fuel-amount" required>
+
+            <label for="payment-method">Payment Method:</label>
+            <select id="payment-method" name="payment-method">
+                <option value="cash">Cash</option>
+                <option value="card">Card</option>
+            </select>
+
+            <label for="bonus-card">Bonus Card Number:</label>
+            <input type="number" id="bonus-card" name="bonus-card" required>
+
+            <label for="bonus-option">Use Bonus:</label>
+            <select id="bonus-option" name="bonus-option">
+                <option value="use">Use Bonus</option>
+                <option value="save">Save Bonus</option>
+            </select>
+
+            <button type="submit">Pay</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleFuelType(button) {
+            const isActive = button.classList.contains('activated');
+            const allFuelTypes = document.querySelectorAll('.fuel-type');
+            allFuelTypes.forEach(fuelType => fuelType.classList.remove('activated'));
+
+            if (!isActive) {
+                button.classList.add('activated');
+            }
+        }
+    </script>
+</body>
+</html>
