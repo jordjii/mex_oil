@@ -27,7 +27,7 @@ namespace mexoil
 
         public static string usernameID = string.Empty;
 
-        private int GetBonusPointsForCustomerFromDatabase(int customerID)
+        public int GetBonusPointsForCustomerFromDatabase(int customerID)
         {
             int bonusPoints = 0;
 

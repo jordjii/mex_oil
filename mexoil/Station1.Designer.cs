@@ -34,6 +34,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PayButton = new System.Windows.Forms.Button();
             this.admin_button = new System.Windows.Forms.Button();
+            this.totalAmountTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PayViaBonusCard = new System.Windows.Forms.Button();
+            this.MyProfile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -107,11 +111,55 @@
             this.admin_button.UseVisualStyleBackColor = true;
             this.admin_button.Click += new System.EventHandler(this.admin_button_Click);
             // 
+            // totalAmountTextBox
+            // 
+            this.totalAmountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalAmountTextBox.Location = new System.Drawing.Point(29, 390);
+            this.totalAmountTextBox.Name = "totalAmountTextBox";
+            this.totalAmountTextBox.Size = new System.Drawing.Size(193, 31);
+            this.totalAmountTextBox.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(24, 362);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(115, 25);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Total Price";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // PayViaBonusCard
+            // 
+            this.PayViaBonusCard.Location = new System.Drawing.Point(324, 340);
+            this.PayViaBonusCard.Name = "PayViaBonusCard";
+            this.PayViaBonusCard.Size = new System.Drawing.Size(155, 55);
+            this.PayViaBonusCard.TabIndex = 9;
+            this.PayViaBonusCard.Text = "Pay Via Bonus Card";
+            this.PayViaBonusCard.UseVisualStyleBackColor = true;
+            this.PayViaBonusCard.Click += new System.EventHandler(this.PayViaBonusCard_Click);
+            // 
+            // MyProfile
+            // 
+            this.MyProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MyProfile.Location = new System.Drawing.Point(663, 314);
+            this.MyProfile.Name = "MyProfile";
+            this.MyProfile.Size = new System.Drawing.Size(125, 59);
+            this.MyProfile.TabIndex = 10;
+            this.MyProfile.Text = "My Profile";
+            this.MyProfile.UseVisualStyleBackColor = true;
+            this.MyProfile.Click += new System.EventHandler(this.MyProfile_Click);
+            // 
             // Station1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.MyProfile);
+            this.Controls.Add(this.PayViaBonusCard);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.totalAmountTextBox);
             this.Controls.Add(this.admin_button);
             this.Controls.Add(this.PayButton);
             this.Controls.Add(this.label1);
@@ -133,5 +181,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button PayButton;
         private System.Windows.Forms.Button admin_button;
+        private System.Windows.Forms.TextBox totalAmountTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button PayViaBonusCard;
+        private System.Windows.Forms.Button MyProfile;
     }
 }

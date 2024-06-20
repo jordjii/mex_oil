@@ -44,7 +44,11 @@ namespace mexoil
                 {
                     GasolinePurchaseManager purchaseManager = new GasolinePurchaseManager();
                     string username = "username_here"; // Предположим, у вас есть способ получить имя пользователя
-                    purchaseManager.ProcessGasolinePurchase(purchaseID, GenerateTransactionID(), customerID, fuelType, quantity, username);
+                    decimal pricePerLiter = purchaseManager.GetPricePerLiterFromFuelType(fuelType);  // Получаем цену за литр
+                    decimal totalAmount = pricePerLiter * quantity;  // Вычисляем общую сумму
+
+                    // Display the total amount in the TextBox
+                    totalAmountTextBox.Text = totalAmount.ToString("C");  // Assuming you want to display the total amount as currency
                 }
                 else
                 {
@@ -56,6 +60,7 @@ namespace mexoil
                 MessageBox.Show("Please select a fuel type before making a purchase.");
             }
         }
+
 
         private int GenerateTransactionID()
         {
@@ -72,121 +77,157 @@ namespace mexoil
             AdminPanelForm adminPanelForm = new AdminPanelForm();
             adminPanelForm.Show();
         }
-    }
 
-    public class GasolinePurchaseManager
-    {
-        const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
-
-        public void ProcessGasolinePurchase(int purchaseID, int transactionID, int customerID, string fuelType, decimal quantity, string username)
+        private void label2_Click(object sender, EventArgs e)
         {
-            int retrievedCustomerID = (GetCustomerID("penis"));
 
-            int stationID = GetStationID("sperma");
-
-            decimal pricePerLiter = GetPricePerLiterFromFuelType(fuelType);
-
-            decimal totalAmount = pricePerLiter * quantity;
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string updateQuery = "UPDATE Purchases SET PricePerLiter = @PricePerLiter, TotalAmount = @TotalAmount WHERE PurchaseID = @PurchaseID";
-
-                using (SqlCommand command = new SqlCommand(updateQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@PricePerLiter", pricePerLiter);
-                    command.Parameters.AddWithValue("@TotalAmount", totalAmount);
-                    command.Parameters.AddWithValue("@PurchaseID", purchaseID);
-
-                    command.ExecuteNonQuery();
-                }
-
-                string insertTransactionQuery = "INSERT INTO FuelTransactions (TransactionID, StationID, CustomerID, FuelType, Quantity, TransactionDateTime) VALUES (@TransactionID, @StationID, @CustomerID, @FuelType, @Quantity, @TransactionDateTime)";
-                using (SqlCommand insertTransactionCommand = new SqlCommand(insertTransactionQuery, connection))
-                {
-                    insertTransactionCommand.Parameters.AddWithValue("@TransactionID", transactionID);
-                    insertTransactionCommand.Parameters.AddWithValue("@StationID", stationID);
-                    insertTransactionCommand.Parameters.AddWithValue("@CustomerID", retrievedCustomerID);
-                    insertTransactionCommand.Parameters.AddWithValue("@FuelType", fuelType);
-                    insertTransactionCommand.Parameters.AddWithValue("@Quantity", quantity);
-                    insertTransactionCommand.Parameters.AddWithValue("@TransactionDateTime", DateTime.Now);
-                    insertTransactionCommand.ExecuteNonQuery();
-                }
-            }
         }
 
-        static int GetCustomerID(string username)
+        public class GasolinePurchaseManager
         {
-            int customerID = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
+
+            public void ProcessGasolinePurchase(int purchaseID, int transactionID, int customerID, string fuelType, decimal quantity, string username)
             {
-                connection.Open();
+                int retrievedCustomerID = (GetCustomerID("penis"));
 
-                string query = "SELECT CustomerID FROM Customers WHERE FirstName = @FirstName";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                int stationID = GetStationID("sperma");
+
+                decimal pricePerLiter = GetPricePerLiterFromFuelType(fuelType);
+
+                decimal totalAmount = pricePerLiter * quantity;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@FirstName", username);
+                    connection.Open();
 
-                    object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
+                    string updateQuery = "UPDATE Purchases SET PricePerLiter = @PricePerLiter, TotalAmount = @TotalAmount WHERE PurchaseID = @PurchaseID";
+
+                    using (SqlCommand command = new SqlCommand(updateQuery, connection))
                     {
-                        customerID = Convert.ToInt32(result);
+                        command.Parameters.AddWithValue("@PricePerLiter", pricePerLiter);
+                        command.Parameters.AddWithValue("@TotalAmount", totalAmount);
+                        command.Parameters.AddWithValue("@PurchaseID", purchaseID);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    string insertTransactionQuery = "INSERT INTO FuelTransactions (TransactionID, StationID, CustomerID, FuelType, Quantity, TransactionDateTime) VALUES (@TransactionID, @StationID, @CustomerID, @FuelType, @Quantity, @TransactionDateTime)";
+                    using (SqlCommand insertTransactionCommand = new SqlCommand(insertTransactionQuery, connection))
+                    {
+                        insertTransactionCommand.Parameters.AddWithValue("@TransactionID", transactionID);
+                        insertTransactionCommand.Parameters.AddWithValue("@StationID", stationID);
+                        insertTransactionCommand.Parameters.AddWithValue("@CustomerID", retrievedCustomerID);
+                        insertTransactionCommand.Parameters.AddWithValue("@FuelType", fuelType);
+                        insertTransactionCommand.Parameters.AddWithValue("@Quantity", quantity);
+                        insertTransactionCommand.Parameters.AddWithValue("@TransactionDateTime", DateTime.Now);
+                        insertTransactionCommand.ExecuteNonQuery();
                     }
                 }
             }
-            return customerID;
-        }
 
-        static int GetStationID(string stationName)
-        {
-            int stationID = 0;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            static int GetCustomerID(string username)
             {
-                connection.Open();
-
-                string query = "SELECT StationID FROM Stations WHERE StationName = @StationName";
-                using (SqlCommand command = new SqlCommand(query, connection))
+                int customerID = 0;
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@StationName", stationName);
+                    connection.Open();
 
-                    object result = command.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
+                    string query = "SELECT CustomerID FROM Customers WHERE FirstName = @FirstName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        stationID = Convert.ToInt32(result);
+                        command.Parameters.AddWithValue("@FirstName", username);
+
+                        object result = command.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            customerID = Convert.ToInt32(result);
+                        }
                     }
                 }
+                return customerID;
             }
-            return stationID;
+
+            static int GetStationID(string stationName)
+            {
+                int stationID = 0;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT StationID FROM Stations WHERE StationName = @StationName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@StationName", stationName);
+
+                        object result = command.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            stationID = Convert.ToInt32(result);
+                        }
+                    }
+                }
+                return stationID;
+            }
+
+            public decimal GetPricePerLiterFromFuelType(string fuelType)
+            {
+                decimal pricePerLiter = 0;
+
+                // Логика для определения цены за литр на основе выбранного типа топлива
+                switch (fuelType)
+                {
+                    case "92":
+                        pricePerLiter = 45.50m;  // Пример цены за литр топлива '92'
+                        break;
+                    case "95":
+                        pricePerLiter = 50.75m;  // Пример цены за литр топлива '95'
+                        break;
+                    case "98":
+                        pricePerLiter = 99.30m;  // Пример цены за литр топлива '98'
+                        break;
+                    case "Diesel":
+                        pricePerLiter = 70.90m;  // Пример цены за литр дизельного топлива
+                        break;
+                    default:
+                        // Обработка случая, когда тип топлива отсутствует в списке
+                        // Можно установить стандартное значение или обработать ошибку
+                        break;
+                }
+
+                return pricePerLiter;
+            }
         }
 
-        private decimal GetPricePerLiterFromFuelType(string fuelType)
+        private void MyProfile_Click(object sender, EventArgs e)
         {
-            decimal pricePerLiter = 0;
+            MyProfileForm myprofile = new MyProfileForm();
+            myprofile.Show();
+        }
 
-            // Логика для определения цены за литр на основе выбранного типа топлива
-            switch (fuelType)
+        private void PayViaBonusCard_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem != null)
             {
-                case "92":
-                    pricePerLiter = 45.50m;  // Пример цены за литр топлива '92'
-                    break;
-                case "95":
-                    pricePerLiter = 50.75m;  // Пример цены за литр топлива '95'
-                    break;
-                case "98":
-                    pricePerLiter = 99.30m;  // Пример цены за литр топлива '98'
-                    break;
-                case "Diesel":
-                    pricePerLiter = 70.90m;  // Пример цены за литр дизельного топлива
-                    break;
-                default:
-                    // Обработка случая, когда тип топлива отсутствует в списке
-                    // Можно установить стандартное значение или обработать ошибку
-                    break;
-            }
+                string fuelType = comboBox2.SelectedItem.ToString();
 
-            return pricePerLiter;
+                // Check if the quantity is entered in the textBox1
+                if (decimal.TryParse(textBox1.Text, out decimal quantity))
+                {
+                    GasolinePurchaseManager purchaseManager = new GasolinePurchaseManager();
+                    string username = "здесь_имя_пользователя"; // Предположим, у вас есть способ получить имя пользователя
+
+                    decimal pricePerLiter = purchaseManager.GetPricePerLiterFromFuelType(fuelType);  // Получаем цену за литр
+                    decimal totalAmount = pricePerLiter * quantity;  // Вычисляем общую сумму
+
+                    int bonusPointsToDeduct = Convert.ToInt32(totalAmount); // Предполагая, что 1 бонус = 1 единица валюты
+
+                    int customerID = this.customerID; // Получаем идентификатор покупателя из поля класса
+
+                    MyProfileForm myProfileForm = new MyProfileForm(); // Создаем экземпляр MyProfileForm
+                    int remainingBonusPoints = myProfileForm.GetBonusPointsForCustomerFromDatabase(customerID);  // Получаем текущее количество бонусных баллов
+                }
+            }
         }
     }
 }
