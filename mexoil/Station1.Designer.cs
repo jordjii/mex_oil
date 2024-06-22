@@ -38,6 +38,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.PayViaBonusCard = new System.Windows.Forms.Button();
             this.MyProfile = new System.Windows.Forms.Button();
+            this.pictureBoxStation1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStation1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -151,11 +153,25 @@
             this.MyProfile.UseVisualStyleBackColor = true;
             this.MyProfile.Click += new System.EventHandler(this.MyProfile_Click);
             // 
+            // pictureBoxStation1
+            // 
+            this.pictureBoxStation1.Image = global::mexoil.Properties.Resources.station1;
+            this.pictureBoxStation1.ImageLocation = "";
+            this.pictureBoxStation1.InitialImage = global::mexoil.Properties.Resources.station1;
+            this.pictureBoxStation1.Location = new System.Drawing.Point(39, 32);
+            this.pictureBoxStation1.Name = "pictureBoxStation1";
+            this.pictureBoxStation1.Size = new System.Drawing.Size(100, 96);
+            this.pictureBoxStation1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxStation1.TabIndex = 11;
+            this.pictureBoxStation1.TabStop = false;
+            this.pictureBoxStation1.Click += new System.EventHandler(this.pictureBoxStation1_Click);
+            // 
             // Station1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBoxStation1);
             this.Controls.Add(this.MyProfile);
             this.Controls.Add(this.PayViaBonusCard);
             this.Controls.Add(this.label2);
@@ -168,6 +184,7 @@
             this.Controls.Add(this.comboBox1);
             this.Name = "Station1";
             this.Text = "Station1";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStation1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +202,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button PayViaBonusCard;
         private System.Windows.Forms.Button MyProfile;
+        private System.Windows.Forms.PictureBox pictureBoxStation1;
     }
 }

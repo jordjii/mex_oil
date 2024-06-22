@@ -83,6 +83,7 @@ namespace mexoil
 
         }
 
+
         public class GasolinePurchaseManager
         {
             const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
@@ -110,6 +111,16 @@ namespace mexoil
                         command.Parameters.AddWithValue("@PurchaseID", purchaseID);
 
                         command.ExecuteNonQuery();
+                    }
+
+                    // вычитаем количество приобретенного топлива из резерва заправочной станции
+                    string updateFuelBankQuery = "UPDATE Stations SET FuelBank = FuelBank - @Quantity WHERE StationID = @StationID";
+                    using (SqlCommand updateFuelBankCommand = new SqlCommand(updateFuelBankQuery, connection))
+                    {
+                        updateFuelBankCommand.Parameters.AddWithValue("@Quantity", quantity);
+                        updateFuelBankCommand.Parameters.AddWithValue("@StationID", stationID);
+                        updateFuelBankCommand.Parameters.AddWithValue("@FuelBank", 200);
+                        updateFuelBankCommand.ExecuteNonQuery();
                     }
 
                     string insertTransactionQuery = "INSERT INTO FuelTransactions (TransactionID, StationID, CustomerID, FuelType, Quantity, TransactionDateTime) VALUES (@TransactionID, @StationID, @CustomerID, @FuelType, @Quantity, @TransactionDateTime)";
@@ -205,29 +216,77 @@ namespace mexoil
             myprofile.Show();
         }
 
-        private void PayViaBonusCard_Click(object sender, EventArgs e)
+        public void PayViaBonusCard_Click(object sender, EventArgs e)
         {
             if (comboBox2.SelectedItem != null)
             {
                 string fuelType = comboBox2.SelectedItem.ToString();
 
-                // Check if the quantity is entered in the textBox1
                 if (decimal.TryParse(textBox1.Text, out decimal quantity))
                 {
                     GasolinePurchaseManager purchaseManager = new GasolinePurchaseManager();
                     string username = "здесь_имя_пользователя"; // Предположим, у вас есть способ получить имя пользователя
 
-                    decimal pricePerLiter = purchaseManager.GetPricePerLiterFromFuelType(fuelType);  // Получаем цену за литр
-                    decimal totalAmount = pricePerLiter * quantity;  // Вычисляем общую сумму
+                    decimal pricePerLiter = purchaseManager.GetPricePerLiterFromFuelType(fuelType);
+                    decimal totalAmount = pricePerLiter * quantity;
 
-                    int bonusPointsToDeduct = Convert.ToInt32(totalAmount); // Предполагая, что 1 бонус = 1 единица валюты
+                    // бонусные баллы для текущего пользователя
+                    int bonusPointsToDeduct = Convert.ToInt32(totalAmount); // 1 бонус = 1 валютная единица
+                    int customerID = 3; 
 
-                    int customerID = this.customerID; // Получаем идентификатор покупателя из поля класса
+                    MyProfileForm myProfileForm = new MyProfileForm();
+                    int remainingBonusPoints = myProfileForm.GetBonusPointsForCustomerFromDatabase(customerID); // Получаем текущее количество бонусных баллов
+                    Console.WriteLine($"Fuel type selected: {fuelType}");
+                    Console.WriteLine($"Quantity entered: {quantity}");
+                    Console.WriteLine($"Price per liter: {pricePerLiter}");
+                    Console.WriteLine($"Total amount to pay: {totalAmount}");
+                    Console.WriteLine($"Customer ID: {customerID}");
+                    Console.WriteLine($"Remaining bonus points: {remainingBonusPoints}");
+                    Console.WriteLine($"Bonus points to deduct: {bonusPointsToDeduct}");
+                    // Проверяем, достаточно ли баллов для списания
+                    if (remainingBonusPoints >= bonusPointsToDeduct)
+                    {
+                        // Вычитаем бонусные баллы из общего баланса
+                        int newBonusPointsBalance = remainingBonusPoints - bonusPointsToDeduct;
 
-                    MyProfileForm myProfileForm = new MyProfileForm(); // Создаем экземпляр MyProfileForm
-                    int remainingBonusPoints = myProfileForm.GetBonusPointsForCustomerFromDatabase(customerID);  // Получаем текущее количество бонусных баллов
+                        // Обновляем бонусные баллы в базе данных
+                        UpdateBonusPointsInDatabase(customerID, newBonusPointsBalance);
+
+                        // Выводим сообщение об успешной операции списания бонусных баллов
+                        MessageBox.Show($"You have successfully paid using {bonusPointsToDeduct} bonus points! 😊");
+                    }
+                    else
+                    {
+                        // Выводим сообщение, что у пользователя недостаточно бонусных баллов
+                        MessageBox.Show("Insufficient bonus points. Please use a different payment method. 😞");
+                    }
                 }
             }
+        }
+        public void UpdateBonusPointsInDatabase(int customerID, int newBonusPointsBalance)
+        {
+            const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Обновляем количество бонусных баллов для указанного пользователя
+                string updateQuery = "UPDATE BonusCards SET BonusPoints = @NewBonusPointsBalance WHERE CustomerID = @CustomerID";
+
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@NewBonusPointsBalance", newBonusPointsBalance);
+                    command.Parameters.AddWithValue("@CustomerID", customerID);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void pictureBoxStation1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -155,9 +155,9 @@ namespace mexoil
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@CustomerID", customerID);
-                    command.Parameters.AddWithValue("@BonusPoints", 100);
+                    command.Parameters.AddWithValue("@BonusPoints", 300);
 
-                    int cardID = Convert.ToInt32(command.ExecuteScalar()); // Получаем только что вставленный CardID
+                    int cardID = Convert.ToInt32(command.ExecuteScalar()); 
                 }
             }
         }

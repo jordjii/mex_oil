@@ -54,6 +54,26 @@ namespace mexoil
             return bonusPoints;
         }
 
+        public void UpdateBonusPointsInDatabase(int customerID, int newBonusPointsBalance)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Обновляем количество бонусных баллов для указанного пользователя
+                string updateQuery = "UPDATE BonusCards SET BonusPoints = @NewBonusPointsBalance WHERE CustomerID = @CustomerID";
+
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@NewBonusPointsBalance", newBonusPointsBalance);
+                    command.Parameters.AddWithValue("@CustomerID", customerID);
+
+                    command.ExecuteNonQuery();
+                }
+
+            }
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 

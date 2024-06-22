@@ -141,6 +141,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Station1.resx">
       <DependentUpon>Station1.cs</DependentUpon>
@@ -194,6 +195,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\station1.png" />
+    <None Include="Resources\station2.png" />
+    <None Include="Resources\station3.jpg" />
+    <None Include="Resources\logo mexoil.png" />
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
