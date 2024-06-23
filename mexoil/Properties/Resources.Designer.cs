@@ -73,6 +73,16 @@ namespace mexoil.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ProfilePicture {
+            get {
+                object obj = ResourceManager.GetObject("ProfilePicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap station1 {
             get {
                 object obj = ResourceManager.GetObject("station1", resourceCulture);

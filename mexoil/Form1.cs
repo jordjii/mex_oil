@@ -14,7 +14,7 @@ namespace mexoil
 {
     public partial class Form1 : Form
     {
-        const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
+        public static string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
 
         public Form1()
         {
@@ -180,11 +180,15 @@ namespace mexoil
             {
                 int customerID = GetCustomerID(username);
                 MyProfileForm.usernameID = customerID.ToString();
+                MyProfileForm.userName = TextUsername.Text;
 
                 MessageBox.Show("Добро пожаловать, " + username + "!");
                 FormChooseFuelStation formChooseFuel = new FormChooseFuelStation();
                 formChooseFuel.Show();
                 this.Hide();
+
+                MyProfileForm myProfileForm = new MyProfileForm();
+                myProfileForm.UserName = TextUsername.Text;
             }
             else
             {

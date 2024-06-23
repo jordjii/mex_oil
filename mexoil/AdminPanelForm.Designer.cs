@@ -47,35 +47,32 @@
             this.customersBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.customersTableAdapter = new mexoil.Database1DataSet1TableAdapters.CustomersTableAdapter();
             this.tableAdapterManager = new mexoil.Database1DataSet1TableAdapters.TableAdapterManager();
-            this.customersDataGridView = new System.Windows.Forms.DataGridView();
-            this.cardIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bonusPointsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bonusCardsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bonusCardsTableAdapter = new mexoil.Database1DataSet1TableAdapters.BonusCardsTableAdapter();
-            this.customersDataGridView1 = new System.Windows.Forms.DataGridView();
+            this.fuelTransactionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fuelTransactionsTableAdapter = new mexoil.Database1DataSet1TableAdapters.FuelTransactionsTableAdapter();
+            this.customersDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelTransactionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fuelTransactionsTableAdapter = new mexoil.Database1DataSet1TableAdapters.FuelTransactionsTableAdapter();
             this.fuelTransactionsDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingNavigator)).BeginInit();
             this.customersBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bonusCardsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelTransactionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelTransactionsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,6 +168,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Положение";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -223,42 +221,11 @@
             this.tableAdapterManager.BonusCardsTableAdapter = null;
             this.tableAdapterManager.CustomersTableAdapter = this.customersTableAdapter;
             this.tableAdapterManager.DiscountCardsTableAdapter = null;
+            this.tableAdapterManager.FuelPricesTableAdapter = null;
             this.tableAdapterManager.FuelTransactionsTableAdapter = null;
             this.tableAdapterManager.PurchasesTableAdapter = null;
             this.tableAdapterManager.StationsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = mexoil.Database1DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // customersDataGridView
-            // 
-            this.customersDataGridView.AutoGenerateColumns = false;
-            this.customersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cardIDDataGridViewTextBoxColumn,
-            this.customerIDDataGridViewTextBoxColumn,
-            this.bonusPointsDataGridViewTextBoxColumn});
-            this.customersDataGridView.DataSource = this.bonusCardsBindingSource;
-            this.customersDataGridView.Location = new System.Drawing.Point(85, 240);
-            this.customersDataGridView.Name = "customersDataGridView";
-            this.customersDataGridView.Size = new System.Drawing.Size(394, 176);
-            this.customersDataGridView.TabIndex = 1;
-            // 
-            // cardIDDataGridViewTextBoxColumn
-            // 
-            this.cardIDDataGridViewTextBoxColumn.DataPropertyName = "CardID";
-            this.cardIDDataGridViewTextBoxColumn.HeaderText = "CardID";
-            this.cardIDDataGridViewTextBoxColumn.Name = "cardIDDataGridViewTextBoxColumn";
-            // 
-            // customerIDDataGridViewTextBoxColumn
-            // 
-            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.HeaderText = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
-            // 
-            // bonusPointsDataGridViewTextBoxColumn
-            // 
-            this.bonusPointsDataGridViewTextBoxColumn.DataPropertyName = "BonusPoints";
-            this.bonusPointsDataGridViewTextBoxColumn.HeaderText = "BonusPoints";
-            this.bonusPointsDataGridViewTextBoxColumn.Name = "bonusPointsDataGridViewTextBoxColumn";
             // 
             // bonusCardsBindingSource
             // 
@@ -269,22 +236,31 @@
             // 
             this.bonusCardsTableAdapter.ClearBeforeFill = true;
             // 
-            // customersDataGridView1
+            // fuelTransactionsBindingSource
             // 
-            this.customersDataGridView1.AutoGenerateColumns = false;
-            this.customersDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customersDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fuelTransactionsBindingSource.DataMember = "FuelTransactions";
+            this.fuelTransactionsBindingSource.DataSource = this.database1DataSet1;
+            // 
+            // fuelTransactionsTableAdapter
+            // 
+            this.fuelTransactionsTableAdapter.ClearBeforeFill = true;
+            // 
+            // customersDataGridView
+            // 
+            this.customersDataGridView.AutoGenerateColumns = false;
+            this.customersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.customersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.customersDataGridView1.DataSource = this.customersBindingSource;
-            this.customersDataGridView1.Location = new System.Drawing.Point(85, 42);
-            this.customersDataGridView1.Name = "customersDataGridView1";
-            this.customersDataGridView1.Size = new System.Drawing.Size(670, 192);
-            this.customersDataGridView1.TabIndex = 2;
+            this.customersDataGridView.DataSource = this.customersBindingSource;
+            this.customersDataGridView.Location = new System.Drawing.Point(0, 28);
+            this.customersDataGridView.Name = "customersDataGridView";
+            this.customersDataGridView.Size = new System.Drawing.Size(754, 144);
+            this.customersDataGridView.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -322,15 +298,6 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "Passwordd";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
-            // fuelTransactionsBindingSource
-            // 
-            this.fuelTransactionsBindingSource.DataMember = "FuelTransactions";
-            this.fuelTransactionsBindingSource.DataSource = this.database1DataSet1;
-            // 
-            // fuelTransactionsTableAdapter
-            // 
-            this.fuelTransactionsTableAdapter.ClearBeforeFill = true;
-            // 
             // fuelTransactionsDataGridView
             // 
             this.fuelTransactionsDataGridView.AutoGenerateColumns = false;
@@ -340,12 +307,14 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11});
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13});
             this.fuelTransactionsDataGridView.DataSource = this.fuelTransactionsBindingSource;
-            this.fuelTransactionsDataGridView.Location = new System.Drawing.Point(342, 370);
+            this.fuelTransactionsDataGridView.Location = new System.Drawing.Point(0, 214);
             this.fuelTransactionsDataGridView.Name = "fuelTransactionsDataGridView";
-            this.fuelTransactionsDataGridView.Size = new System.Drawing.Size(611, 220);
-            this.fuelTransactionsDataGridView.TabIndex = 3;
+            this.fuelTransactionsDataGridView.Size = new System.Drawing.Size(754, 214);
+            this.fuelTransactionsDataGridView.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -377,13 +346,24 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "TransactionDateTime";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "StationID";
+            this.dataGridViewTextBoxColumn12.HeaderText = "StationID";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "ColumnID";
+            this.dataGridViewTextBoxColumn13.HeaderText = "ColumnID";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
             // AdminPanelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(965, 602);
             this.Controls.Add(this.fuelTransactionsDataGridView);
-            this.Controls.Add(this.customersDataGridView1);
             this.Controls.Add(this.customersDataGridView);
             this.Controls.Add(this.customersBindingNavigator);
             this.Name = "AdminPanelForm";
@@ -394,10 +374,9 @@
             this.customersBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bonusCardsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelTransactionsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelTransactionsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -423,26 +402,24 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton customersBindingNavigatorSaveItem;
-        private System.Windows.Forms.DataGridView customersDataGridView;
         private System.Windows.Forms.BindingSource bonusCardsBindingSource;
         private Database1DataSet1TableAdapters.BonusCardsTableAdapter bonusCardsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cardIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bonusPointsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView customersDataGridView1;
+        private System.Windows.Forms.BindingSource fuelTransactionsBindingSource;
+        private Database1DataSet1TableAdapters.FuelTransactionsTableAdapter fuelTransactionsTableAdapter;
+        private System.Windows.Forms.DataGridView customersDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.BindingSource fuelTransactionsBindingSource;
-        private Database1DataSet1TableAdapters.FuelTransactionsTableAdapter fuelTransactionsTableAdapter;
         private System.Windows.Forms.DataGridView fuelTransactionsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
     }
 }

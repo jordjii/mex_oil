@@ -36,6 +36,8 @@ namespace mexoil {
         
         private StationsDataTable tableStations;
         
+        private FuelPricesDataTable tableFuelPrices;
+        
         private global::System.Data.DataRelation relationFK__BonusCard__Custo__412EB0B6;
         
         private global::System.Data.DataRelation relationFK__DiscountC__Custo__440B1D61;
@@ -45,6 +47,8 @@ namespace mexoil {
         private global::System.Data.DataRelation relationFK__Purchases__Stati__3E52440B;
         
         private global::System.Data.DataRelation relationFK__Purchases__Trans__3D5E1FD2;
+        
+        private global::System.Data.DataRelation relationFK__FuelTrans__Stati__03F0984C;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -91,6 +95,9 @@ namespace mexoil {
                 }
                 if ((ds.Tables["Stations"] != null)) {
                     base.Tables.Add(new StationsDataTable(ds.Tables["Stations"]));
+                }
+                if ((ds.Tables["FuelPrices"] != null)) {
+                    base.Tables.Add(new FuelPricesDataTable(ds.Tables["FuelPrices"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -167,6 +174,16 @@ namespace mexoil {
         public StationsDataTable Stations {
             get {
                 return this.tableStations;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public FuelPricesDataTable FuelPrices {
+            get {
+                return this.tableFuelPrices;
             }
         }
         
@@ -255,6 +272,9 @@ namespace mexoil {
                 if ((ds.Tables["Stations"] != null)) {
                     base.Tables.Add(new StationsDataTable(ds.Tables["Stations"]));
                 }
+                if ((ds.Tables["FuelPrices"] != null)) {
+                    base.Tables.Add(new FuelPricesDataTable(ds.Tables["FuelPrices"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -324,11 +344,18 @@ namespace mexoil {
                     this.tableStations.InitVars();
                 }
             }
+            this.tableFuelPrices = ((FuelPricesDataTable)(base.Tables["FuelPrices"]));
+            if ((initTable == true)) {
+                if ((this.tableFuelPrices != null)) {
+                    this.tableFuelPrices.InitVars();
+                }
+            }
             this.relationFK__BonusCard__Custo__412EB0B6 = this.Relations["FK__BonusCard__Custo__412EB0B6"];
             this.relationFK__DiscountC__Custo__440B1D61 = this.Relations["FK__DiscountC__Custo__440B1D61"];
             this.relationFK__FuelTrans__Custo__38996AB5 = this.Relations["FK__FuelTrans__Custo__38996AB5"];
             this.relationFK__Purchases__Stati__3E52440B = this.Relations["FK__Purchases__Stati__3E52440B"];
             this.relationFK__Purchases__Trans__3D5E1FD2 = this.Relations["FK__Purchases__Trans__3D5E1FD2"];
+            this.relationFK__FuelTrans__Stati__03F0984C = this.Relations["FK__FuelTrans__Stati__03F0984C"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -351,6 +378,8 @@ namespace mexoil {
             base.Tables.Add(this.tablePurchases);
             this.tableStations = new StationsDataTable();
             base.Tables.Add(this.tableStations);
+            this.tableFuelPrices = new FuelPricesDataTable();
+            base.Tables.Add(this.tableFuelPrices);
             this.relationFK__BonusCard__Custo__412EB0B6 = new global::System.Data.DataRelation("FK__BonusCard__Custo__412EB0B6", new global::System.Data.DataColumn[] {
                         this.tableCustomers.CustomerIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableBonusCards.CustomerIDColumn}, false);
@@ -371,6 +400,10 @@ namespace mexoil {
                         this.tableFuelTransactions.TransactionIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePurchases.TransactionIDColumn}, false);
             this.Relations.Add(this.relationFK__Purchases__Trans__3D5E1FD2);
+            this.relationFK__FuelTrans__Stati__03F0984C = new global::System.Data.DataRelation("FK__FuelTrans__Stati__03F0984C", new global::System.Data.DataColumn[] {
+                        this.tableStations.StationIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFuelTransactions.StationIDColumn}, false);
+            this.Relations.Add(this.relationFK__FuelTrans__Stati__03F0984C);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -406,6 +439,12 @@ namespace mexoil {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeStations() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeFuelPrices() {
             return false;
         }
         
@@ -481,6 +520,9 @@ namespace mexoil {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void StationsRowChangeEventHandler(object sender, StationsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void FuelPricesRowChangeEventHandler(object sender, FuelPricesRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1410,6 +1452,10 @@ namespace mexoil {
             
             private global::System.Data.DataColumn columnTransactionDateTime;
             
+            private global::System.Data.DataColumn columnStationID;
+            
+            private global::System.Data.DataColumn columnColumnID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public FuelTransactionsDataTable() {
@@ -1485,6 +1531,22 @@ namespace mexoil {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn StationIDColumn {
+                get {
+                    return this.columnStationID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ColumnIDColumn {
+                get {
+                    return this.columnColumnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1520,16 +1582,21 @@ namespace mexoil {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FuelTransactionsRow AddFuelTransactionsRow(int TransactionID, CustomersRow parentCustomersRowByFK__FuelTrans__Custo__38996AB5, string FuelType, decimal Quantity, System.DateTime TransactionDateTime) {
+            public FuelTransactionsRow AddFuelTransactionsRow(int TransactionID, CustomersRow parentCustomersRowByFK__FuelTrans__Custo__38996AB5, string FuelType, decimal Quantity, System.DateTime TransactionDateTime, StationsRow parentStationsRowByFK__FuelTrans__Stati__03F0984C, int ColumnID) {
                 FuelTransactionsRow rowFuelTransactionsRow = ((FuelTransactionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TransactionID,
                         null,
                         FuelType,
                         Quantity,
-                        TransactionDateTime};
+                        TransactionDateTime,
+                        null,
+                        ColumnID};
                 if ((parentCustomersRowByFK__FuelTrans__Custo__38996AB5 != null)) {
                     columnValuesArray[1] = parentCustomersRowByFK__FuelTrans__Custo__38996AB5[0];
+                }
+                if ((parentStationsRowByFK__FuelTrans__Stati__03F0984C != null)) {
+                    columnValuesArray[5] = parentStationsRowByFK__FuelTrans__Stati__03F0984C[0];
                 }
                 rowFuelTransactionsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFuelTransactionsRow);
@@ -1565,6 +1632,8 @@ namespace mexoil {
                 this.columnFuelType = base.Columns["FuelType"];
                 this.columnQuantity = base.Columns["Quantity"];
                 this.columnTransactionDateTime = base.Columns["TransactionDateTime"];
+                this.columnStationID = base.Columns["StationID"];
+                this.columnColumnID = base.Columns["ColumnID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1580,6 +1649,10 @@ namespace mexoil {
                 base.Columns.Add(this.columnQuantity);
                 this.columnTransactionDateTime = new global::System.Data.DataColumn("TransactionDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTransactionDateTime);
+                this.columnStationID = new global::System.Data.DataColumn("StationID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStationID);
+                this.columnColumnID = new global::System.Data.DataColumn("ColumnID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnColumnID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTransactionID}, true));
                 this.columnTransactionID.AllowDBNull = false;
@@ -2046,6 +2119,8 @@ namespace mexoil {
             
             private global::System.Data.DataColumn columnNumOfColumns;
             
+            private global::System.Data.DataColumn columnFuelBank;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public StationsDataTable() {
@@ -2113,6 +2188,14 @@ namespace mexoil {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FuelBankColumn {
+                get {
+                    return this.columnFuelBank;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2148,13 +2231,14 @@ namespace mexoil {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public StationsRow AddStationsRow(int StationID, string StationName, string Location, int NumOfColumns) {
+            public StationsRow AddStationsRow(int StationID, string StationName, string Location, int NumOfColumns, int FuelBank) {
                 StationsRow rowStationsRow = ((StationsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         StationID,
                         StationName,
                         Location,
-                        NumOfColumns};
+                        NumOfColumns,
+                        FuelBank};
                 rowStationsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStationsRow);
                 return rowStationsRow;
@@ -2188,6 +2272,7 @@ namespace mexoil {
                 this.columnStationName = base.Columns["StationName"];
                 this.columnLocation = base.Columns["Location"];
                 this.columnNumOfColumns = base.Columns["NumOfColumns"];
+                this.columnFuelBank = base.Columns["FuelBank"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2201,6 +2286,8 @@ namespace mexoil {
                 base.Columns.Add(this.columnLocation);
                 this.columnNumOfColumns = new global::System.Data.DataColumn("NumOfColumns", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNumOfColumns);
+                this.columnFuelBank = new global::System.Data.DataColumn("FuelBank", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFuelBank);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnStationID}, true));
                 this.columnStationID.AllowDBNull = false;
@@ -2293,6 +2380,280 @@ namespace mexoil {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "StationsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class FuelPricesDataTable : global::System.Data.TypedTableBase<FuelPricesRow> {
+            
+            private global::System.Data.DataColumn columnFuelType;
+            
+            private global::System.Data.DataColumn columnPricePerLiter;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FuelPricesDataTable() {
+                this.TableName = "FuelPrices";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal FuelPricesDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected FuelPricesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FuelTypeColumn {
+                get {
+                    return this.columnFuelType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PricePerLiterColumn {
+                get {
+                    return this.columnPricePerLiter;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FuelPricesRow this[int index] {
+                get {
+                    return ((FuelPricesRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event FuelPricesRowChangeEventHandler FuelPricesRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event FuelPricesRowChangeEventHandler FuelPricesRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event FuelPricesRowChangeEventHandler FuelPricesRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event FuelPricesRowChangeEventHandler FuelPricesRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddFuelPricesRow(FuelPricesRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FuelPricesRow AddFuelPricesRow(string FuelType, decimal PricePerLiter) {
+                FuelPricesRow rowFuelPricesRow = ((FuelPricesRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        FuelType,
+                        PricePerLiter};
+                rowFuelPricesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowFuelPricesRow);
+                return rowFuelPricesRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FuelPricesRow FindByFuelType(string FuelType) {
+                return ((FuelPricesRow)(this.Rows.Find(new object[] {
+                            FuelType})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                FuelPricesDataTable cln = ((FuelPricesDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new FuelPricesDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnFuelType = base.Columns["FuelType"];
+                this.columnPricePerLiter = base.Columns["PricePerLiter"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnFuelType = new global::System.Data.DataColumn("FuelType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFuelType);
+                this.columnPricePerLiter = new global::System.Data.DataColumn("PricePerLiter", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPricePerLiter);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnFuelType}, true));
+                this.columnFuelType.AllowDBNull = false;
+                this.columnFuelType.Unique = true;
+                this.columnFuelType.MaxLength = 20;
+                this.columnPricePerLiter.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FuelPricesRow NewFuelPricesRow() {
+                return ((FuelPricesRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new FuelPricesRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(FuelPricesRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.FuelPricesRowChanged != null)) {
+                    this.FuelPricesRowChanged(this, new FuelPricesRowChangeEvent(((FuelPricesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.FuelPricesRowChanging != null)) {
+                    this.FuelPricesRowChanging(this, new FuelPricesRowChangeEvent(((FuelPricesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.FuelPricesRowDeleted != null)) {
+                    this.FuelPricesRowDeleted(this, new FuelPricesRowChangeEvent(((FuelPricesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.FuelPricesRowDeleting != null)) {
+                    this.FuelPricesRowDeleting(this, new FuelPricesRowChangeEvent(((FuelPricesRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveFuelPricesRow(FuelPricesRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Database1DataSet1 ds = new Database1DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "FuelPricesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2810,12 +3171,55 @@ namespace mexoil {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int StationID {
+                get {
+                    try {
+                        return ((int)(this[this.tableFuelTransactions.StationIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'StationID\' в таблице \'FuelTransactions\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFuelTransactions.StationIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ColumnID {
+                get {
+                    try {
+                        return ((int)(this[this.tableFuelTransactions.ColumnIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ColumnID\' в таблице \'FuelTransactions\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFuelTransactions.ColumnIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public CustomersRow CustomersRow {
                 get {
                     return ((CustomersRow)(this.GetParentRow(this.Table.ParentRelations["FK__FuelTrans__Custo__38996AB5"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__FuelTrans__Custo__38996AB5"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public StationsRow StationsRow {
+                get {
+                    return ((StationsRow)(this.GetParentRow(this.Table.ParentRelations["FK__FuelTrans__Stati__03F0984C"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__FuelTrans__Stati__03F0984C"]);
                 }
             }
             
@@ -2865,6 +3269,30 @@ namespace mexoil {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTransactionDateTimeNull() {
                 this[this.tableFuelTransactions.TransactionDateTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsStationIDNull() {
+                return this.IsNull(this.tableFuelTransactions.StationIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetStationIDNull() {
+                this[this.tableFuelTransactions.StationIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsColumnIDNull() {
+                return this.IsNull(this.tableFuelTransactions.ColumnIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetColumnIDNull() {
+                this[this.tableFuelTransactions.ColumnIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3114,6 +3542,22 @@ namespace mexoil {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int FuelBank {
+                get {
+                    try {
+                        return ((int)(this[this.tableStations.FuelBankColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FuelBank\' в таблице \'Stations\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStations.FuelBankColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsStationNameNull() {
                 return this.IsNull(this.tableStations.StationNameColumn);
             }
@@ -3150,12 +3594,72 @@ namespace mexoil {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFuelBankNull() {
+                return this.IsNull(this.tableStations.FuelBankColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFuelBankNull() {
+                this[this.tableStations.FuelBankColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PurchasesRow[] GetPurchasesRows() {
                 if ((this.Table.ChildRelations["FK__Purchases__Stati__3E52440B"] == null)) {
                     return new PurchasesRow[0];
                 }
                 else {
                     return ((PurchasesRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Purchases__Stati__3E52440B"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FuelTransactionsRow[] GetFuelTransactionsRows() {
+                if ((this.Table.ChildRelations["FK__FuelTrans__Stati__03F0984C"] == null)) {
+                    return new FuelTransactionsRow[0];
+                }
+                else {
+                    return ((FuelTransactionsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__FuelTrans__Stati__03F0984C"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class FuelPricesRow : global::System.Data.DataRow {
+            
+            private FuelPricesDataTable tableFuelPrices;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal FuelPricesRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableFuelPrices = ((FuelPricesDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FuelType {
+                get {
+                    return ((string)(this[this.tableFuelPrices.FuelTypeColumn]));
+                }
+                set {
+                    this[this.tableFuelPrices.FuelTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal PricePerLiter {
+                get {
+                    return ((decimal)(this[this.tableFuelPrices.PricePerLiterColumn]));
+                }
+                set {
+                    this[this.tableFuelPrices.PricePerLiterColumn] = value;
                 }
             }
         }
@@ -3350,6 +3854,40 @@ namespace mexoil {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public StationsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class FuelPricesRowChangeEvent : global::System.EventArgs {
+            
+            private FuelPricesRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FuelPricesRowChangeEvent(FuelPricesRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FuelPricesRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4678,10 +5216,12 @@ SELECT CardID, CustomerID, DiscountRate FROM DiscountCards WHERE (CardID = @Card
             tableMapping.ColumnMappings.Add("FuelType", "FuelType");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             tableMapping.ColumnMappings.Add("TransactionDateTime", "TransactionDateTime");
+            tableMapping.ColumnMappings.Add("StationID", "StationID");
+            tableMapping.ColumnMappings.Add("ColumnID", "ColumnID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[FuelTransactions] WHERE (([TransactionID] = @Original_TransactionID) AND ((@IsNull_CustomerID = 1 AND [CustomerID] IS NULL) OR ([CustomerID] = @Original_CustomerID)) AND ((@IsNull_FuelType = 1 AND [FuelType] IS NULL) OR ([FuelType] = @Original_FuelType)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_TransactionDateTime = 1 AND [TransactionDateTime] IS NULL) OR ([TransactionDateTime] = @Original_TransactionDateTime)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [FuelTransactions] WHERE (([TransactionID] = @Original_TransactionID) AND ((@IsNull_CustomerID = 1 AND [CustomerID] IS NULL) OR ([CustomerID] = @Original_CustomerID)) AND ((@IsNull_FuelType = 1 AND [FuelType] IS NULL) OR ([FuelType] = @Original_FuelType)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_TransactionDateTime = 1 AND [TransactionDateTime] IS NULL) OR ([TransactionDateTime] = @Original_TransactionDateTime)) AND ((@IsNull_ColumnID = 1 AND [ColumnID] IS NULL) OR ([ColumnID] = @Original_ColumnID)) AND ((@IsNull_StationID = 1 AND [StationID] IS NULL) OR ([StationID] = @Original_StationID)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TransactionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -4692,26 +5232,32 @@ SELECT CardID, CustomerID, DiscountRate FROM DiscountCards WHERE (CardID = @Card
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TransactionDateTime", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionDateTime", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TransactionDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionDateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ColumnID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ColumnID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ColumnID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ColumnID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[FuelTransactions] ([TransactionID], [CustomerID], [FuelType], [Quantity], [TransactionDateTime]) VALUES (@TransactionID, @CustomerID, @FuelType, @Quantity, @TransactionDateTime);
-SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM FuelTransactions WHERE (TransactionID = @TransactionID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [FuelTransactions] ([CustomerID], [FuelType], [Quantity], [TransactionDateTime], [ColumnID], [StationID]) VALUES (@CustomerID, @FuelType, @Quantity, @TransactionDateTime, @ColumnID, @StationID);
+SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime, ColumnID, StationID FROM FuelTransactions WHERE (TransactionID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FuelType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ColumnID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ColumnID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[FuelTransactions] SET [TransactionID] = @TransactionID, [CustomerID] = @CustomerID, [FuelType] = @FuelType, [Quantity] = @Quantity, [TransactionDateTime] = @TransactionDateTime WHERE (([TransactionID] = @Original_TransactionID) AND ((@IsNull_CustomerID = 1 AND [CustomerID] IS NULL) OR ([CustomerID] = @Original_CustomerID)) AND ((@IsNull_FuelType = 1 AND [FuelType] IS NULL) OR ([FuelType] = @Original_FuelType)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_TransactionDateTime = 1 AND [TransactionDateTime] IS NULL) OR ([TransactionDateTime] = @Original_TransactionDateTime)));
-SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM FuelTransactions WHERE (TransactionID = @TransactionID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [FuelTransactions] SET [CustomerID] = @CustomerID, [FuelType] = @FuelType, [Quantity] = @Quantity, [TransactionDateTime] = @TransactionDateTime, [ColumnID] = @ColumnID, [StationID] = @StationID WHERE (([TransactionID] = @Original_TransactionID) AND ((@IsNull_CustomerID = 1 AND [CustomerID] IS NULL) OR ([CustomerID] = @Original_CustomerID)) AND ((@IsNull_FuelType = 1 AND [FuelType] IS NULL) OR ([FuelType] = @Original_FuelType)) AND ((@IsNull_Quantity = 1 AND [Quantity] IS NULL) OR ([Quantity] = @Original_Quantity)) AND ((@IsNull_TransactionDateTime = 1 AND [TransactionDateTime] IS NULL) OR ([TransactionDateTime] = @Original_TransactionDateTime)) AND ((@IsNull_ColumnID = 1 AND [ColumnID] IS NULL) OR ([ColumnID] = @Original_ColumnID)) AND ((@IsNull_StationID = 1 AND [StationID] IS NULL) OR ([StationID] = @Original_StationID)));
+SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime, ColumnID, StationID FROM FuelTransactions WHERE (TransactionID = @TransactionID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FuelType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionDateTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ColumnID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ColumnID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TransactionID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CustomerID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CustomerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4721,6 +5267,11 @@ SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM F
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TransactionDateTime", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionDateTime", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TransactionDateTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionDateTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ColumnID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ColumnID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ColumnID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ColumnID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TransactionID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TransactionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4736,8 +5287,8 @@ SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM F
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM db" +
-                "o.FuelTransactions";
+            this._commandCollection[0].CommandText = "SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime, Column" +
+                "ID, StationID FROM FuelTransactions";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4798,7 +5349,7 @@ SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_TransactionID, global::System.Nullable<int> Original_CustomerID, string Original_FuelType, global::System.Nullable<decimal> Original_Quantity, global::System.Nullable<global::System.DateTime> Original_TransactionDateTime) {
+        public virtual int Delete(int Original_TransactionID, global::System.Nullable<int> Original_CustomerID, string Original_FuelType, global::System.Nullable<decimal> Original_Quantity, global::System.Nullable<global::System.DateTime> Original_TransactionDateTime, global::System.Nullable<int> Original_ColumnID, global::System.Nullable<int> Original_StationID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_TransactionID));
             if ((Original_CustomerID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -4832,6 +5383,22 @@ SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM F
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
+            if ((Original_ColumnID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_ColumnID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_StationID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_StationID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4852,31 +5419,42 @@ SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int TransactionID, global::System.Nullable<int> CustomerID, string FuelType, global::System.Nullable<decimal> Quantity, global::System.Nullable<global::System.DateTime> TransactionDateTime) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(TransactionID));
+        public virtual int Insert(global::System.Nullable<int> CustomerID, string FuelType, global::System.Nullable<decimal> Quantity, global::System.Nullable<global::System.DateTime> TransactionDateTime, global::System.Nullable<int> ColumnID, global::System.Nullable<int> StationID) {
             if ((CustomerID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(CustomerID.Value));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CustomerID.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             if ((FuelType == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(FuelType));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FuelType));
             }
             if ((Quantity.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Quantity.Value));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Quantity.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((TransactionDateTime.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(TransactionDateTime.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((TransactionDateTime.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(TransactionDateTime.Value));
+            if ((ColumnID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(ColumnID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((StationID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(StationID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4898,65 +5476,93 @@ SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int TransactionID, global::System.Nullable<int> CustomerID, string FuelType, global::System.Nullable<decimal> Quantity, global::System.Nullable<global::System.DateTime> TransactionDateTime, int Original_TransactionID, global::System.Nullable<int> Original_CustomerID, string Original_FuelType, global::System.Nullable<decimal> Original_Quantity, global::System.Nullable<global::System.DateTime> Original_TransactionDateTime) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(TransactionID));
+        public virtual int Update(global::System.Nullable<int> CustomerID, string FuelType, global::System.Nullable<decimal> Quantity, global::System.Nullable<global::System.DateTime> TransactionDateTime, global::System.Nullable<int> ColumnID, global::System.Nullable<int> StationID, int Original_TransactionID, global::System.Nullable<int> Original_CustomerID, string Original_FuelType, global::System.Nullable<decimal> Original_Quantity, global::System.Nullable<global::System.DateTime> Original_TransactionDateTime, global::System.Nullable<int> Original_ColumnID, global::System.Nullable<int> Original_StationID, int TransactionID) {
             if ((CustomerID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(CustomerID.Value));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(CustomerID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             if ((FuelType == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(FuelType));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FuelType));
             }
             if ((Quantity.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Quantity.Value));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Quantity.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((TransactionDateTime.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(TransactionDateTime.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((TransactionDateTime.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(TransactionDateTime.Value));
+            if ((ColumnID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(ColumnID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_TransactionID));
-            if ((Original_CustomerID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_CustomerID.Value));
+            if ((StationID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(StationID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_TransactionID));
+            if ((Original_CustomerID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_CustomerID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((Original_FuelType == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_FuelType));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_FuelType));
             }
             if ((Original_Quantity.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_Quantity.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_Quantity.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_TransactionDateTime.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_TransactionDateTime.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_TransactionDateTime.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
+            if ((Original_ColumnID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_ColumnID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((Original_StationID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_StationID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(TransactionID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4977,8 +5583,8 @@ SELECT TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime FROM F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> CustomerID, string FuelType, global::System.Nullable<decimal> Quantity, global::System.Nullable<global::System.DateTime> TransactionDateTime, int Original_TransactionID, global::System.Nullable<int> Original_CustomerID, string Original_FuelType, global::System.Nullable<decimal> Original_Quantity, global::System.Nullable<global::System.DateTime> Original_TransactionDateTime) {
-            return this.Update(Original_TransactionID, CustomerID, FuelType, Quantity, TransactionDateTime, Original_TransactionID, Original_CustomerID, Original_FuelType, Original_Quantity, Original_TransactionDateTime);
+        public virtual int Update(global::System.Nullable<int> CustomerID, string FuelType, global::System.Nullable<decimal> Quantity, global::System.Nullable<global::System.DateTime> TransactionDateTime, global::System.Nullable<int> ColumnID, global::System.Nullable<int> StationID, int Original_TransactionID, global::System.Nullable<int> Original_CustomerID, string Original_FuelType, global::System.Nullable<decimal> Original_Quantity, global::System.Nullable<global::System.DateTime> Original_TransactionDateTime, global::System.Nullable<int> Original_ColumnID, global::System.Nullable<int> Original_StationID) {
+            return this.Update(CustomerID, FuelType, Quantity, TransactionDateTime, ColumnID, StationID, Original_TransactionID, Original_CustomerID, Original_FuelType, Original_Quantity, Original_TransactionDateTime, Original_ColumnID, Original_StationID, Original_TransactionID);
         }
     }
     
@@ -5537,10 +6143,11 @@ SELECT PurchaseID, TransactionID, StationID, PricePerLiter, TotalAmount FROM Pur
             tableMapping.ColumnMappings.Add("StationName", "StationName");
             tableMapping.ColumnMappings.Add("Location", "Location");
             tableMapping.ColumnMappings.Add("NumOfColumns", "NumOfColumns");
+            tableMapping.ColumnMappings.Add("FuelBank", "FuelBank");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Stations] WHERE (([StationID] = @Original_StationID) AND ((@IsNull_StationName = 1 AND [StationName] IS NULL) OR ([StationName] = @Original_StationName)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_NumOfColumns = 1 AND [NumOfColumns] IS NULL) OR ([NumOfColumns] = @Original_NumOfColumns)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Stations] WHERE (([StationID] = @Original_StationID) AND ((@IsNull_StationName = 1 AND [StationName] IS NULL) OR ([StationName] = @Original_StationName)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_NumOfColumns = 1 AND [NumOfColumns] IS NULL) OR ([NumOfColumns] = @Original_NumOfColumns)) AND ((@IsNull_FuelBank = 1 AND [FuelBank] IS NULL) OR ([FuelBank] = @Original_FuelBank)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StationName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -5549,26 +6156,28 @@ SELECT PurchaseID, TransactionID, StationID, PricePerLiter, TotalAmount FROM Pur
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Location", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NumOfColumns", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumOfColumns", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NumOfColumns", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumOfColumns", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FuelBank", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelBank", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FuelBank", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelBank", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Stations] ([StationID], [StationName], [Location], [NumOfColum" +
-                "ns]) VALUES (@StationID, @StationName, @Location, @NumOfColumns);\r\nSELECT Statio" +
-                "nID, StationName, Location, NumOfColumns FROM Stations WHERE (StationID = @Stati" +
-                "onID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Stations] ([StationID], [StationName], [Location], [NumOfColumns], [FuelBank]) VALUES (@StationID, @StationName, @Location, @NumOfColumns, @FuelBank);
+SELECT StationID, StationName, Location, NumOfColumns, FuelBank FROM Stations WHERE (StationID = @StationID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Location", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumOfColumns", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumOfColumns", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FuelBank", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelBank", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Stations] SET [StationID] = @StationID, [StationName] = @StationName, [Location] = @Location, [NumOfColumns] = @NumOfColumns WHERE (([StationID] = @Original_StationID) AND ((@IsNull_StationName = 1 AND [StationName] IS NULL) OR ([StationName] = @Original_StationName)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_NumOfColumns = 1 AND [NumOfColumns] IS NULL) OR ([NumOfColumns] = @Original_NumOfColumns)));
-SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (StationID = @StationID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Stations] SET [StationID] = @StationID, [StationName] = @StationName, [Location] = @Location, [NumOfColumns] = @NumOfColumns, [FuelBank] = @FuelBank WHERE (([StationID] = @Original_StationID) AND ((@IsNull_StationName = 1 AND [StationName] IS NULL) OR ([StationName] = @Original_StationName)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_NumOfColumns = 1 AND [NumOfColumns] IS NULL) OR ([NumOfColumns] = @Original_NumOfColumns)) AND ((@IsNull_FuelBank = 1 AND [FuelBank] IS NULL) OR ([FuelBank] = @Original_FuelBank)));
+SELECT StationID, StationName, Location, NumOfColumns, FuelBank FROM Stations WHERE (StationID = @StationID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Location", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumOfColumns", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumOfColumns", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FuelBank", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelBank", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StationID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StationName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StationName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5576,6 +6185,8 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Location", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NumOfColumns", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumOfColumns", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NumOfColumns", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumOfColumns", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FuelBank", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelBank", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FuelBank", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelBank", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5591,7 +6202,7 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT StationID, StationName, Location, NumOfColumns FROM dbo.Stations";
+            this._commandCollection[0].CommandText = "SELECT StationID, StationName, Location, NumOfColumns, FuelBank FROM Stations";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5652,7 +6263,7 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_StationID, string Original_StationName, string Original_Location, global::System.Nullable<int> Original_NumOfColumns) {
+        public virtual int Delete(int Original_StationID, string Original_StationName, string Original_Location, global::System.Nullable<int> Original_NumOfColumns, global::System.Nullable<int> Original_FuelBank) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_StationID));
             if ((Original_StationName == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -5678,6 +6289,14 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            if ((Original_FuelBank.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_FuelBank.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5698,7 +6317,7 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int StationID, string StationName, string Location, global::System.Nullable<int> NumOfColumns) {
+        public virtual int Insert(int StationID, string StationName, string Location, global::System.Nullable<int> NumOfColumns, global::System.Nullable<int> FuelBank) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(StationID));
             if ((StationName == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -5717,6 +6336,12 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((FuelBank.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(FuelBank.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5738,7 +6363,7 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int StationID, string StationName, string Location, global::System.Nullable<int> NumOfColumns, int Original_StationID, string Original_StationName, string Original_Location, global::System.Nullable<int> Original_NumOfColumns) {
+        public virtual int Update(int StationID, string StationName, string Location, global::System.Nullable<int> NumOfColumns, global::System.Nullable<int> FuelBank, int Original_StationID, string Original_StationName, string Original_Location, global::System.Nullable<int> Original_NumOfColumns, global::System.Nullable<int> Original_FuelBank) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(StationID));
             if ((StationName == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -5758,30 +6383,44 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_StationID));
-            if ((Original_StationName == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            if ((FuelBank.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(FuelBank.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_StationName));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_StationID));
+            if ((Original_StationName == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_StationName));
             }
             if ((Original_Location == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Location));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Location));
             }
             if ((Original_NumOfColumns.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_NumOfColumns.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_NumOfColumns.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((Original_FuelBank.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_FuelBank.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5803,8 +6442,330 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string StationName, string Location, global::System.Nullable<int> NumOfColumns, int Original_StationID, string Original_StationName, string Original_Location, global::System.Nullable<int> Original_NumOfColumns) {
-            return this.Update(Original_StationID, StationName, Location, NumOfColumns, Original_StationID, Original_StationName, Original_Location, Original_NumOfColumns);
+        public virtual int Update(string StationName, string Location, global::System.Nullable<int> NumOfColumns, global::System.Nullable<int> FuelBank, int Original_StationID, string Original_StationName, string Original_Location, global::System.Nullable<int> Original_NumOfColumns, global::System.Nullable<int> Original_FuelBank) {
+            return this.Update(Original_StationID, StationName, Location, NumOfColumns, FuelBank, Original_StationID, Original_StationName, Original_Location, Original_NumOfColumns, Original_FuelBank);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class FuelPricesTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public FuelPricesTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "FuelPrices";
+            tableMapping.ColumnMappings.Add("FuelType", "FuelType");
+            tableMapping.ColumnMappings.Add("PricePerLiter", "PricePerLiter");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[FuelPrices] WHERE (([FuelType] = @Original_FuelType) AND ([Pri" +
+                "cePerLiter] = @Original_PricePerLiter))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FuelType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PricePerLiter", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "PricePerLiter", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[FuelPrices] ([FuelType], [PricePerLiter]) VALUES (@FuelType, @" +
+                "PricePerLiter);\r\nSELECT FuelType, PricePerLiter FROM FuelPrices WHERE (FuelType " +
+                "= @FuelType)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FuelType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PricePerLiter", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "PricePerLiter", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[FuelPrices] SET [FuelType] = @FuelType, [PricePerLiter] = @PricePer" +
+                "Liter WHERE (([FuelType] = @Original_FuelType) AND ([PricePerLiter] = @Original_" +
+                "PricePerLiter));\r\nSELECT FuelType, PricePerLiter FROM FuelPrices WHERE (FuelType" +
+                " = @FuelType)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FuelType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PricePerLiter", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "PricePerLiter", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FuelType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuelType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PricePerLiter", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 10, 2, "PricePerLiter", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::mexoil.Properties.Settings.Default.Database1ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT FuelType, PricePerLiter FROM dbo.FuelPrices";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(Database1DataSet1.FuelPricesDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual Database1DataSet1.FuelPricesDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            Database1DataSet1.FuelPricesDataTable dataTable = new Database1DataSet1.FuelPricesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Database1DataSet1.FuelPricesDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Database1DataSet1 dataSet) {
+            return this.Adapter.Update(dataSet, "FuelPrices");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(string Original_FuelType, decimal Original_PricePerLiter) {
+            if ((Original_FuelType == null)) {
+                throw new global::System.ArgumentNullException("Original_FuelType");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_FuelType));
+            }
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_PricePerLiter));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string FuelType, decimal PricePerLiter) {
+            if ((FuelType == null)) {
+                throw new global::System.ArgumentNullException("FuelType");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(FuelType));
+            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((decimal)(PricePerLiter));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string FuelType, decimal PricePerLiter, string Original_FuelType, decimal Original_PricePerLiter) {
+            if ((FuelType == null)) {
+                throw new global::System.ArgumentNullException("FuelType");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(FuelType));
+            }
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((decimal)(PricePerLiter));
+            if ((Original_FuelType == null)) {
+                throw new global::System.ArgumentNullException("Original_FuelType");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_FuelType));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Original_PricePerLiter));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(decimal PricePerLiter, string Original_FuelType, decimal Original_PricePerLiter) {
+            return this.Update(Original_FuelType, PricePerLiter, Original_FuelType, Original_PricePerLiter);
         }
     }
     
@@ -5831,6 +6792,8 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
         private PurchasesTableAdapter _purchasesTableAdapter;
         
         private StationsTableAdapter _stationsTableAdapter;
+        
+        private FuelPricesTableAdapter _fuelPricesTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -5933,6 +6896,20 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public FuelPricesTableAdapter FuelPricesTableAdapter {
+            get {
+                return this._fuelPricesTableAdapter;
+            }
+            set {
+                this._fuelPricesTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -5974,6 +6951,10 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                             && (this._stationsTableAdapter.Connection != null))) {
                     return this._stationsTableAdapter.Connection;
                 }
+                if (((this._fuelPricesTableAdapter != null) 
+                            && (this._fuelPricesTableAdapter.Connection != null))) {
+                    return this._fuelPricesTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -6005,6 +6986,9 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                 if ((this._stationsTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._fuelPricesTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -6025,21 +7009,21 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._fuelTransactionsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.FuelTransactions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._fuelTransactionsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._stationsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Stations.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._stationsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._fuelTransactionsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.FuelTransactions.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._fuelTransactionsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6070,6 +7054,15 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._fuelPricesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.FuelPrices.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._fuelPricesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -6088,19 +7081,19 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._fuelTransactionsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.FuelTransactions.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._fuelTransactionsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._stationsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Stations.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._stationsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._fuelTransactionsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.FuelTransactions.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._fuelTransactionsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6128,6 +7121,14 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._fuelPricesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.FuelPrices.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._fuelPricesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -6138,6 +7139,14 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(Database1DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._fuelPricesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.FuelPrices.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._fuelPricesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._purchasesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Purchases.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -6162,19 +7171,19 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._stationsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Stations.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._stationsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._fuelTransactionsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.FuelTransactions.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._fuelTransactionsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._stationsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Stations.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._stationsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6252,6 +7261,11 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
             }
             if (((this._stationsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._stationsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._fuelPricesTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._fuelPricesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -6341,6 +7355,15 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                         adaptersWithAcceptChangesDuringUpdate.Add(this._stationsTableAdapter.Adapter);
                     }
                 }
+                if ((this._fuelPricesTableAdapter != null)) {
+                    revertConnections.Add(this._fuelPricesTableAdapter, this._fuelPricesTableAdapter.Connection);
+                    this._fuelPricesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._fuelPricesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._fuelPricesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._fuelPricesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._fuelPricesTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -6422,6 +7445,10 @@ SELECT StationID, StationName, Location, NumOfColumns FROM Stations WHERE (Stati
                 if ((this._stationsTableAdapter != null)) {
                     this._stationsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._stationsTableAdapter]));
                     this._stationsTableAdapter.Transaction = null;
+                }
+                if ((this._fuelPricesTableAdapter != null)) {
+                    this._fuelPricesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._fuelPricesTableAdapter]));
+                    this._fuelPricesTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

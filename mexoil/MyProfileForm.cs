@@ -14,7 +14,12 @@ namespace mexoil
 {
     public partial class MyProfileForm : Form
     {
-
+        public static string userName = string.Empty;
+        public string UserName
+        {
+            get { return ProfileUsername.Text; }
+            set { ProfileUsername.Text = value; }
+        }
 
         public MyProfileForm()
         {
@@ -88,6 +93,7 @@ namespace mexoil
         {
             ur_id_label.Text = usernameID;
             textBoxBonusPoints.Text = GetBonusPointsForCustomerFromDatabase(int.Parse(usernameID)).ToString();
+            ProfileUsername.Text = userName;
         }
     }
 }

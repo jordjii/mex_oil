@@ -35,12 +35,12 @@ namespace mexoil
 
         private void PayButton_Click(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedItem != null)
+            if (ChooseFuelType.SelectedItem != null)
             {
-                string fuelType = comboBox2.SelectedItem.ToString();
+                string fuelType = ChooseFuelType.SelectedItem.ToString();
 
                 // Проверяем, что введено количество в поле textBox1
-                if (decimal.TryParse(textBox1.Text, out decimal quantity))
+                if (decimal.TryParse(Liters.Text, out decimal quantity))
                 {
                     GasolinePurchaseManager purchaseManager = new GasolinePurchaseManager();
                     string username = "username_here"; // Предположим, у вас есть способ получить имя пользователя
@@ -216,13 +216,44 @@ namespace mexoil
             myprofile.Show();
         }
 
+
+        void InsertFuelTransaction()
+        {
+            const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
+
+            string query = "INSERT INTO FuelTransactions (FuelType, Quantity, TransactionDateTime, StationID, ColumnID) " +
+                           "VALUES (@FuelType, @Quantity, @TransactionDateTime, @StationID, @ColumnID)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                if (int.TryParse(ChooseColumn.SelectedItem?.ToString(), out int columnID))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@FuelType", ChooseFuelType.SelectedItem.ToString());
+                        command.Parameters.AddWithValue("@Quantity", decimal.Parse(Liters.Text));
+                        command.Parameters.AddWithValue("@TransactionDateTime", DateTime.Now);
+                        command.Parameters.AddWithValue("@StationID", 1);
+                        command.Parameters.AddWithValue("@ColumnID", 1);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        Console.WriteLine($"Rows Inserted: {rowsAffected}");
+                    }
+                }
+            }
+        }
+
         public void PayViaBonusCard_Click(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedItem != null)
+            if (ChooseFuelType.SelectedItem != null)
             {
-                string fuelType = comboBox2.SelectedItem.ToString();
+                InsertFuelTransaction();
 
-                if (decimal.TryParse(textBox1.Text, out decimal quantity))
+                string fuelType = ChooseFuelType.SelectedItem.ToString();
+
+                if (decimal.TryParse(Liters.Text, out decimal quantity))
                 {
                     GasolinePurchaseManager purchaseManager = new GasolinePurchaseManager();
                     string username = "здесь_имя_пользователя"; // Предположим, у вас есть способ получить имя пользователя
@@ -232,7 +263,7 @@ namespace mexoil
 
                     // бонусные баллы для текущего пользователя
                     int bonusPointsToDeduct = Convert.ToInt32(totalAmount); // 1 бонус = 1 валютная единица
-                    int customerID = 3; 
+                    int customerID = int.Parse(MyProfileForm.usernameID); 
 
                     MyProfileForm myProfileForm = new MyProfileForm();
                     int remainingBonusPoints = myProfileForm.GetBonusPointsForCustomerFromDatabase(customerID); // Получаем текущее количество бонусных баллов

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ChooseColumn = new System.Windows.Forms.ComboBox();
+            this.ChooseFuelType = new System.Windows.Forms.ComboBox();
+            this.Liters = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.PayButton = new System.Windows.Forms.Button();
             this.admin_button = new System.Windows.Forms.Button();
@@ -42,44 +42,44 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStation1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // ChooseColumn
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.ChooseColumn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChooseColumn.FormattingEnabled = true;
+            this.ChooseColumn.Items.AddRange(new object[] {
             "Column 1",
             "Column 2",
             "Column 3"});
-            this.comboBox1.Location = new System.Drawing.Point(303, 95);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBox1.Size = new System.Drawing.Size(193, 33);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "Choose Column";
+            this.ChooseColumn.Location = new System.Drawing.Point(303, 95);
+            this.ChooseColumn.Name = "ChooseColumn";
+            this.ChooseColumn.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ChooseColumn.Size = new System.Drawing.Size(193, 33);
+            this.ChooseColumn.TabIndex = 0;
+            this.ChooseColumn.Text = "Choose Column";
             // 
-            // comboBox2
+            // ChooseFuelType
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.ChooseFuelType.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChooseFuelType.FormattingEnabled = true;
+            this.ChooseFuelType.Items.AddRange(new object[] {
             "92",
             "95",
             "98",
             "Diesel"});
-            this.comboBox2.Location = new System.Drawing.Point(303, 149);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBox2.Size = new System.Drawing.Size(193, 33);
-            this.comboBox2.TabIndex = 1;
-            this.comboBox2.Text = "Choose Fuel";
+            this.ChooseFuelType.Location = new System.Drawing.Point(303, 149);
+            this.ChooseFuelType.Name = "ChooseFuelType";
+            this.ChooseFuelType.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ChooseFuelType.Size = new System.Drawing.Size(193, 33);
+            this.ChooseFuelType.TabIndex = 1;
+            this.ChooseFuelType.Text = "Choose Fuel";
             // 
-            // textBox1
+            // Liters
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(303, 228);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 31);
-            this.textBox1.TabIndex = 2;
+            this.Liters.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Liters.Location = new System.Drawing.Point(303, 228);
+            this.Liters.Name = "Liters";
+            this.Liters.Size = new System.Drawing.Size(193, 31);
+            this.Liters.TabIndex = 2;
             // 
             // label1
             // 
@@ -179,9 +179,9 @@
             this.Controls.Add(this.admin_button);
             this.Controls.Add(this.PayButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Liters);
+            this.Controls.Add(this.ChooseFuelType);
+            this.Controls.Add(this.ChooseColumn);
             this.Name = "Station1";
             this.Text = "Station1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStation1)).EndInit();
@@ -192,9 +192,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox ChooseColumn;
+        private System.Windows.Forms.ComboBox ChooseFuelType;
+        private System.Windows.Forms.TextBox Liters;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button PayButton;
         private System.Windows.Forms.Button admin_button;

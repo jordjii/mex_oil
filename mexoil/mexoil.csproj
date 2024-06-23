@@ -199,6 +199,7 @@
     <None Include="Resources\station2.png" />
     <None Include="Resources\station3.jpg" />
     <None Include="Resources\logo mexoil.png" />
+    <None Include="Resources\ProfilePicture.jpg" />
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
