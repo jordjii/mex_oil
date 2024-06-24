@@ -42,6 +42,7 @@ namespace mexoil
                 // Проверяем, что введено количество в поле textBox1
                 if (decimal.TryParse(Liters.Text, out decimal quantity))
                 {
+                    InsertFuelTransaction();
                     GasolinePurchaseManager purchaseManager = new GasolinePurchaseManager();
                     string username = "username_here"; // Предположим, у вас есть способ получить имя пользователя
                     decimal pricePerLiter = purchaseManager.GetPricePerLiterFromFuelType(fuelType);  // Получаем цену за литр
@@ -220,28 +221,23 @@ namespace mexoil
         void InsertFuelTransaction()
         {
             const string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True";
-
-            string query = "INSERT INTO FuelTransactions (FuelType, Quantity, TransactionDateTime, StationID, ColumnID) " +
-                           "VALUES (@FuelType, @Quantity, @TransactionDateTime, @StationID, @ColumnID)";
+            string query = "INSERT INTO FuelTransactions (CustomerID, FuelType, Quantity, TransactionDateTime, StationID, ColumnID) VALUES (@CustomerID, @FuelType, @Quantity, @TransactionDateTime, @StationID, @ColumnID)";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                if (int.TryParse(ChooseColumn.SelectedItem?.ToString(), out int columnID))
-                {
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        command.Parameters.AddWithValue("@CustomerID", MyProfileForm.usernameID);
                         command.Parameters.AddWithValue("@FuelType", ChooseFuelType.SelectedItem.ToString());
                         command.Parameters.AddWithValue("@Quantity", decimal.Parse(Liters.Text));
                         command.Parameters.AddWithValue("@TransactionDateTime", DateTime.Now);
                         command.Parameters.AddWithValue("@StationID", 1);
                         command.Parameters.AddWithValue("@ColumnID", 1);
 
-                        int rowsAffected = command.ExecuteNonQuery();
-                        Console.WriteLine($"Rows Inserted: {rowsAffected}");
+                        command.ExecuteNonQuery();
                     }
-                }
             }
         }
 

@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\githubRepositories\\mex_oil\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C82D8849-2889-4EEB-9122-7963E978BA92}|mexoil\\mexoil.csproj|d:\\githubrepositories\\mex_oil\\mexoil\\station1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C82D8849-2889-4EEB-9122-7963E978BA92}|mexoil\\mexoil.csproj|solutionrelative:mexoil\\station1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C82D8849-2889-4EEB-9122-7963E978BA92}|mexoil\\mexoil.csproj|d:\\githubrepositories\\mex_oil\\mexoil\\station1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C82D8849-2889-4EEB-9122-7963E978BA92}|mexoil\\mexoil.csproj|solutionrelative:mexoil\\station1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C82D8849-2889-4EEB-9122-7963E978BA92}|mexoil\\mexoil.csproj|d:\\githubrepositories\\mex_oil\\mexoil\\adminpanelform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C82D8849-2889-4EEB-9122-7963E978BA92}|mexoil\\mexoil.csproj|solutionrelative:mexoil\\adminpanelform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:916273320:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:907418858:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{873151d0-cf2e-48cc-b4bf-ad0394f6a3c3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminPanelForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\githubRepositories\\mex_oil\\mexoil\\AdminPanelForm.cs",
+              "RelativeDocumentMoniker": "mexoil\\AdminPanelForm.cs",
+              "ToolTip": "D:\\githubRepositories\\mex_oil\\mexoil\\AdminPanelForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "mexoil\\AdminPanelForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T22:46:39.654Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Station1.cs",
+              "DocumentMoniker": "D:\\githubRepositories\\mex_oil\\mexoil\\Station1.cs",
+              "RelativeDocumentMoniker": "mexoil\\Station1.cs",
+              "ToolTip": "D:\\githubRepositories\\mex_oil\\mexoil\\Station1.cs*",
+              "RelativeToolTip": "mexoil\\Station1.cs*",
+              "ViewState": "AQIAAMEAAAAAAAAAAAAuwNwAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T22:43:22.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Station1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "D:\\githubRepositories\\mex_oil\\mexoil\\Station1.cs",
+              "RelativeDocumentMoniker": "mexoil\\Station1.cs",
+              "ToolTip": "D:\\githubRepositories\\mex_oil\\mexoil\\Station1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "RelativeToolTip": "mexoil\\Station1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T22:43:20.138Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
